@@ -9,21 +9,21 @@ class Pokemon
     @id = id
   end
   
-  def save
+  def self.save(name, type, db)
     if self.id
       self.update
     else
       sql = <<-SQL
-        INSERT INTO songs (name, album)
+        INSERT INTO pokemon (name, type, db)
         VALUES (?, ?)
       SQL
-      DB[:conn].execute(sql, self.name, self.album)
-      @id = DB[:conn].execute("SELECT last_insert_rowid() FROM songs")[0][0]
+      DB[:conn].execute(sql, self.name, self.album, self.db)
+      @id = DB[:conn].execute("SELECT last_insert_rowid() FROM pokemon")[0][0]
     end
   end
   
   def update
-    sql = "UPDATE pokemon SET name = ?, type = ? WHERE name = ?"
+    sql = "UPDATE pokemon SET name = ?, type = ? WHERE id = ?"
     DB[:conn].execute(sql, self.name, self.type, self.id)
   end
   

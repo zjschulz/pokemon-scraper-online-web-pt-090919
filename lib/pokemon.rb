@@ -24,7 +24,7 @@ class Pokemon
   
   def update
     sql = "UPDATE pokemon SET name = ?, type = ? WHERE name = ?"
-    DB[:conn].execute(sql, self.name, self.album, self.name)
+    DB[:conn].execute(sql, self.name, self.type, self.id)
   end
   
 end

@@ -9,7 +9,7 @@ class Pokemon
     @id = id
   end
   
-  def save
+  def self.save
     if self.id
       self.update
     else

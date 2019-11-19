@@ -14,7 +14,7 @@ class Pokemon
       self.update
     else
       sql = <<-SQL
-        INSERT INTO pokemon (name, type, db)
+        INSERT INTO pokemon
         VALUES (?, ?)
       SQL
       DB[:conn].execute(sql, self.name, self.album, self.db)
